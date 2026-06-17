@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{post.title}}</h2>
+
+<p>{{post.content}}</p>
+
+<hr>
+
+<h4>Comments</h4>
+
+{% for comment in comments %}
+
+<div class="alert alert-secondary">
+
+{{comment.text}}
+
+</div>
+
+{% endfor %}
+
+{% if current_user.is_authenticated %}
+
+<form method="POST">
+
+<textarea
+name="comment"
+class="form-control mb-3"></textarea>
+
+<button class="btn btn-primary">
+Add Comment
+</button>
+
+</form>
+
+{% endif %}
+
+{% endblock %}
